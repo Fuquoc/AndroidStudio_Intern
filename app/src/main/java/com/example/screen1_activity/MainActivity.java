@@ -16,20 +16,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button switchbtn = (Button)findViewById(R.id.button);
-        EditText editText = (EditText)findViewById(R.id.editTextTextPersonName);
+        EditText editTextMSV = (EditText)findViewById(R.id.editTextTextPersonName);
+        EditText editTextTEN = (EditText)findViewById(R.id.editTextTextPersonName3);
+        EditText editTextSDT = (EditText)findViewById(R.id.editTextTextPersonName2);
         switchbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                switchActivities(editText.getText().toString());
+                switchActivities(editTextMSV.getText().toString(),editTextTEN.getText().toString(),Integer.parseInt(editTextSDT.getText().toString()) );
             }
         });
     }
-    private void switchActivities(String msv) {
+    private void switchActivities(String msv,String hoten,int sodienthoai) {
         Intent switchActivityIntent = new Intent(this, activity_screen2.class);
-        //Bundle bundle = new Bundle();
-        //bundle.putString("MSV",msv);
-        //switchActivityIntent.putExtra("MSVBundle",bundle);
-        switchActivityIntent.putExtra("MSV",msv);
+
+        SinhVien sinhVien = new SinhVien(msv,hoten,sodienthoai);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("sinhvien",sinhVien);
+        switchActivityIntent.putExtra("MSVBundle",bundle);
+        //switchActivityIntent.putExtra("MSV",msv);
         startActivity(switchActivityIntent);
     }
 }
