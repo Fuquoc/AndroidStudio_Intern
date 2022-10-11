@@ -8,10 +8,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1915" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/drawable/social_16px_logo_facebook.xml" value="0.1915" />
         <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/drawable/social_16px_logo_youtube.xml" value="0.16" />
-        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/activity_profile.xml" value="0.25" />
-        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/activity_signup.xml" value="0.264" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/activity_signup.xml" value="0.2" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/fragment_contact.xml" value="0.536" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/fragment_home_.xml" value="0.25" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/fragment_profile.xml" value="0.176" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/layout/layout_contact.xml" value="0.72" />
+        <entry key="..\:/DH/AndroidStudio_/MyLoginApp-master/MyLoginApp-master/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2324074074074074" />
       </map>
     </option>
   </component>

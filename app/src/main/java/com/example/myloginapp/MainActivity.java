@@ -12,8 +12,9 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Hashtable;
 
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,19 +25,32 @@ public class MainActivity extends AppCompatActivity {
         TextView password = (TextView) findViewById(R.id.password);
 
         MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
-        Button signupbtn = (Button)findViewById(R.id.signupbtn);
+        Button signupbtn = (Button)findViewById(R.id.buttonSignUp_Login);
         //admin and admin
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals("quoc") && password.getText().toString().equals("quoc")) {
-                    //correct
-                    Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                    switchActivities(profile_activity.class);
-                } else
+                String un = username.getText().toString();
+                String pw = password.getText().toString();
+
+                Account acc = new Account();
+                Hashtable list = acc.Get();
+                if (list.containsKey(un)) {
+                    if(list.get(un).equals(pw)){
+                        //correct
+                        Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                        switchActivities(activity_home.class);
+                    }
+                    else {
+                        //incorrect
+                        Toast.makeText(MainActivity.this, "LOGIN FAILED !!!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
                     //incorrect
                     Toast.makeText(MainActivity.this, "LOGIN FAILED !!!", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
         });
