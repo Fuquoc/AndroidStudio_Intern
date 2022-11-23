@@ -2,138 +2,83 @@ package com.example.myloginapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Hashtable;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String PREFS_NAME = "preferences";
-    private static final String PREF_UNAME = "Username";
-    private static final String PREF_PASSWORD = "Password";
-
-    private final String DefaultUnameValue = "";
-    private String UnameValue;
-
-    private final String DefaultPasswordValue = "";
-    private String PasswordValue;
-
     TextView username;
     TextView password;
-    CheckBox checkremember;
-    @Override
-    public void onPause() {
-        super.onPause();
-        savePreferences();
+    private FirebaseAuth auth;
+    //ArrayList<User> users= new ArrayList<User>();
+    //User newUser, userFinded = null;
+    //SharedPreferences sharedPreferences;
 
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        loadPreferences();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        Button signupbtn = (Button)findViewById(R.id.buttonSignUp_Login);
+        MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
         username = (TextView) findViewById(R.id.username);
         password = (TextView) findViewById(R.id.password);
-        checkremember = (CheckBox)findViewById(R.id.checkBoxRemember);
-        MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
-        Button signupbtn = (Button)findViewById(R.id.buttonSignUp_Login);
-        //admin and admin
-
-        DBHelper DB = new DBHelper(this);
+        auth = FirebaseAuth.getInstance();
+        //sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
+        //username.setText(sharedPreferences.getString("taikhoan", ""));
+        //password.setText(sharedPreferences.getString("matkhau", ""));
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String un = username.getText().toString();
-                String pw = password.getText().toString();
-
-                //Account acc = new Account();
-                //Hashtable list = acc.Get();
-             /*   if (list.containsKey(un)) {
-                    if(list.get(un).equals(pw)){
-                        //correct
-                        Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                        switchActivities(activity_home.class);
-                    }
-                    else {
-                        //incorrect
-                        Toast.makeText(MainActivity.this, "LOGIN FAILED !!!", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    //incorrect
-                    Toast.makeText(MainActivity.this, "LOGIN FAILED !!!", Toast.LENGTH_SHORT).show();
-                }
-            */
-                if(un.equals("") || pw.equals("")){
-                    Toast.makeText(MainActivity.this, "Field Empty", Toast.LENGTH_SHORT).show();
-                }else {
-                    boolean checkuserpass = DB.CheckUserName(un,pw);
-                    if(checkuserpass==true){
-                        Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                        if(checkremember.isChecked()){
-                            savePreferences();
-                        }
-                        switchActivities(activity_home.class);
-                    }else {
-                        Toast.makeText(MainActivity.this, "User name or Password incorrect", Toast.LENGTH_SHORT).show();
-                    }
-                }
+                handleLogin(v);
             }
         });
-
         signupbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                switchActivities(signup_activity.class);
+                toRegister(v);
             }
         });
-
     }
-
-        private void switchActivities(Class page) {
-            Intent switchActivityIntent = new Intent(this, page);
-            startActivity(switchActivityIntent);
+    public void toRegister(View view) {
+        Intent switchActivityIntent = new Intent(this, signup_activity.class);
+        startActivity(switchActivityIntent);
+    }
+    public void handleLogin(View view) {
+        String email = this.username.getText().toString();
+        String pass = this.password.getText().toString();
+        if(email.isEmpty() || pass.isEmpty()) {
+            Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+        } else {
+            auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this, task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(this, "Login successfully", Toast.LENGTH_SHORT).show();
+                    //SharedPreferences.Editor editor = sharedPreferences.edit();
+                    //editor.putString("taikhoan", email);
+                    //editor.putString("matkhau", pass);
+                    //editor.commit();
+                    startActivity(new Intent(this, MainActivity.class));
+                } else {
+                    Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-    private void savePreferences() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME,
-                Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-
-        // Edit and commit
-        UnameValue = username.getText().toString();
-        PasswordValue = password.getText().toString();
-        System.out.println("onPause save name: " + UnameValue);
-        System.out.println("onPause save password: " + PasswordValue);
-        editor.putString(PREF_UNAME, UnameValue);
-        editor.putString(PREF_PASSWORD, PasswordValue);
-        editor.commit();
     }
-    private void loadPreferences() {
-
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME,
-                Context.MODE_PRIVATE);
-
-        // Get value
-        UnameValue = settings.getString(PREF_UNAME, DefaultUnameValue);
-        PasswordValue = settings.getString(PREF_PASSWORD, DefaultPasswordValue);
-        username.setText(UnameValue);
-        password.setText(PasswordValue);
-        System.out.println("onResume load name: " + UnameValue);
-        System.out.println("onResume load password: " + PasswordValue);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //if (requestCode == signup_activity.RESULT && resultCode == RESULT_OK) {
+            //newUser = (User) data.getSerializableExtra("user");
+            //users.add(newUser);
+        //}
     }
 }
