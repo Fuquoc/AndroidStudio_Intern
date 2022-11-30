@@ -19,10 +19,10 @@ public class ListSach extends AppCompatActivity {
 
         int[] imageId = {R.drawable.datnohoa,R.drawable.haibantaye,R.drawable.hatlaigieo};
         String[] name = {"Đất Nở Hoa","Hai Bàn Tay Em","Sergio","Hạt Lại Gieo"};
-        String[] lastMessage = {"Tập thơ Đất nở hoa (NXB Văn học, 1960)",
+        String[] mota = {"Tập thơ Đất nở hoa (NXB Văn học, 1960)",
                 "Bài thơ hay các bạn vừa xem là bài “Hai Bàn Tay Em” của tác giả Cù Huy Cận. Thuộc danh mục Thơ Huy Cận trong Những Tác Phẩm Thơ Tiêu Biểu Và Nổi Tiếng",
                 "Tập thơ Hạt lại gieo (1984)"};
-        String[] lastmsgTime = {"0 sao","0 sao","0 sao"};
+        String[] sao = {"17 sao","0 sao","0 sao"};
         String[] TomTat = {"Bên cạnh các tập thơ khác, Huy Cận còn nổi tiếng với nhiều tập thơ hay đặc sắc. Và một trong số đó phải kể tới tập thơ Hạt lại gieo. Đây là một tập thơ được viết năm 1984 và từ đó đã nâng lên thành một sự khái quát. Đó cũng chính là khát khao được hòa vào biển cả mênh mông bao la. Và qua đó ta cảm nhận được chất trí tuệ, cùng với đó là những rung động bằng trái tim thi sĩ. Cùng đọc các vần thơ hay của Huy Cận dưới đây bạn nhé"
                 ,"Bên cạnh các tập thơ khác, Huy Cận còn nổi tiếng với nhiều tập thơ hay đặc sắc. Và một trong số đó phải kể tới tập thơ Hạt lại gieo. Đây là một tập thơ được viết năm 1984 và từ đó đã nâng lên thành một sự khái quát. Đó cũng chính là khát khao được hòa vào biển cả mênh mông bao la. Và qua đó ta cảm nhận được chất trí tuệ, cùng với đó là những rung động bằng trái tim thi sĩ. Cùng đọc các vần thơ hay của Huy Cận dưới đây bạn nhé",
                 "Bên cạnh các tập thơ khác, Huy Cận còn nổi tiếng với nhiều tập thơ hay đặc sắc. Và một trong số đó phải kể tới tập thơ Hạt lại gieo. Đây là một tập thơ được viết năm 1984 và từ đó đã nâng lên thành một sự khái quát. Đó cũng chính là khát khao được hòa vào biển cả mênh mông bao la. Và qua đó ta cảm nhận được chất trí tuệ, cùng với đó là những rung động bằng trái tim thi sĩ. Cùng đọc các vần thơ hay của Huy Cận dưới đây bạn nhé"};
@@ -31,7 +31,7 @@ public class ListSach extends AppCompatActivity {
 
         for(int i = 0;i< imageId.length;i++){
 
-            TacGia tacGia = new TacGia(name[i],lastMessage[i],lastmsgTime[i],TomTat[i],"",imageId[i]);
+            TacGia tacGia = new TacGia(name[i],mota[i],sao[i],TomTat[i],"",imageId[i]);
             tacGiaArrayList.add(tacGia);
 
         }

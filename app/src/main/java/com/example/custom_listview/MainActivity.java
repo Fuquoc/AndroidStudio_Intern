@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 "Ngô Xuân Diệu (2 tháng 2 năm 1916 — 18 tháng 12 năm 1985), là nhà thơ, nhà báo, nhà văn viết truyện ngắn và nhà phê bình văn học người Việt Nam.",
                 "Xuân Quỳnh (6 tháng 10 năm 1942 – 29 tháng 8 năm 1988), tên đầy đủ là Nguyễn Thị Xuân Quỳnh, là một nữ nhà thơ người Việt Nam. "
                 ,"Tố Hữu, tên thật là Nguyễn Kim Thành (4 tháng 10 năm 1920 – 9 tháng 12 năm 2002) quê gốc ở làng Phù Lai, nay thuộc xã Quảng Thọ, huyện Quảng Điền, tỉnh Thừa Thiên Huế, là một nhà thơ tiêu biểu của thơ cách mạng Việt Nam,"};
-        String[] sao = {"1890","1890","1890","1890","1890"};
+        String[] namsinh = {"1890","1890","1890","1890","1890"};
         String[] phoneNo = {"7656610000","9999043232","7834354323","9876543211","5434432343"};
         String[] country = {"United States","Russia","India","Israel","Germany"};
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i = 0;i< imageId.length;i++){
 
-            TacGia tacGia = new TacGia(name[i],mota[i],sao[i],phoneNo[i],country[i],imageId[i]);
+            TacGia tacGia = new TacGia(name[i],mota[i],namsinh[i],phoneNo[i],country[i],imageId[i]);
             tacGiaArrayList.add(tacGia);
 
         }

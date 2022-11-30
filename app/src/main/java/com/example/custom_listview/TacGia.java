@@ -1,16 +1,16 @@
 package com.example.custom_listview;
 
 public class TacGia {
-
-    String name, lastMessage, lastMsgTime, phoneNo, country;
+    //su dung luon cho sach
+    String name, mota, saohoacnamsinh, tomtat, text;
     int imageId;
 
-    public TacGia(String name, String lastMessage, String lastMsgTime, String phoneNo, String country, int imageId) {
+    public TacGia(String name, String mota, String saohoacnamsinh, String tomtat, String text, int imageId) {
         this.name = name;
-        this.lastMessage = lastMessage;
-        this.lastMsgTime = lastMsgTime;
-        this.phoneNo = phoneNo;
-        this.country = country;
+        this.mota = mota;
+        this.saohoacnamsinh = saohoacnamsinh;
+        this.tomtat = tomtat;
+        this.text = text;
         this.imageId = imageId;
     }
 }

@@ -35,14 +35,14 @@ public class ListAdapter extends ArrayAdapter<TacGia> {
         }
 
         ImageView imageView = convertView.findViewById(R.id.profile_pic);
-        TextView userName = convertView.findViewById(R.id.personName);
-        TextView lastMsg = convertView.findViewById(R.id.lastMessage);
-        TextView time = convertView.findViewById(R.id.msgtime);
+        TextView name = convertView.findViewById(R.id.personName);
+        TextView mota = convertView.findViewById(R.id.lastMessage);
+        TextView saohoacnamsinh = convertView.findViewById(R.id.msgtime);
 
         imageView.setImageResource(tacGia.imageId);
-        userName.setText(tacGia.name);
-        lastMsg.setText(tacGia.lastMessage);
-        time.setText(tacGia.lastMsgTime);
+        name.setText(tacGia.name);
+        mota.setText(tacGia.mota);
+        saohoacnamsinh.setText(tacGia.saohoacnamsinh);
 
 
         return convertView;
